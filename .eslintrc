@@ -5,5 +5,8 @@
   },
   "globals": {
     "SVGAltGlyphElement": false
+  },
+  "rules": {
+    "linebreak-style": ["error", "windows"]
   }
 }
