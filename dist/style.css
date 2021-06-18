@@ -1,0 +1,132 @@
+.container {
+  width: 400px;
+  height: 430px;
+  background-color: rgb(160, 194, 238);
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+.display{
+  font-family: sans-serif;
+  max-width: 380px;
+  height: 45px;
+  font-size: 45px;
+  text-align: right;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  color: black;
+  margin: 10px;
+  padding: 15px 0;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 3px;
+  padding-left: 25px;
+}
+
+.number {
+  width: 60px;
+  height: 60px;
+  background-color:white;
+  font-size: 25px;
+  border: 2px solid black;
+  border-radius: 10px; 
+  cursor: pointer;
+}
+
+.number:hover {
+  transition: .1s linear;
+  box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+}
+
+
+.operation {
+  width: 60px;
+  height: 60px;
+  background-color: #666;
+  color: white;
+  font-size: 25px;
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.operation:hover {
+  transition: .1s linear;
+  box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+}
+
+.clear {
+  margin: 10px 0 0 85px;
+  width: 60px;
+  height: 60px;
+  font-size: 25px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.delete {
+  width: 60px;
+  height: 60px;
+  margin: 10px 0 0 10px;
+  font-size: 25px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+
+.minus {
+  width: 60px;
+  height: 60px;
+  margin: 10px 0 0 10px;
+  font-size: 25px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.clear:hover {
+  transition: .1s linear;
+  box-shadow: inset 3px 3px 6px rgba(255, 255, 255, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+}
+
+.minus:hover {
+  transition: .1s linear;
+  box-shadow: inset 3px 3px 6px rgba(255, 255, 255, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+}
+
+.delete:hover {
+  transition: .1s linear;
+  box-shadow: inset 3px 3px 6px rgba(255, 255, 255, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+}
+
+
+
+.dot {
+  width: 60px;
+  height: 60px;
+  font-size: 25px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: rgb(189, 189, 189);
+  cursor: pointer;
+}
+
+.dot:hover {
+  transition: .1s linear;
+  box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+}
