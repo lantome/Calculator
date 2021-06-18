@@ -7,66 +7,47 @@ const clearOneSimbol = document.querySelector('.delete');
 const minus = document.querySelector('.minus');
 const ERROR_TEXT = 'Error';
 
-let memoryDoT = '.';
 let memoryOldNumber = 0;
 let memoryNewNumber = false;
 let memoryOperation = '';
 
-
-
 function render(value) {
   if (value.length > 14) {
-    display.innerText = ERROR_TEXT
-    return
+    display.innerText = ERROR_TEXT;
   } else {
-    display.innerText = value
+    display.innerText = value;
   }
 }
-
 
 function getDisplayValue() {
   if (display.innerText.includes(ERROR_TEXT)) {
-    return ''
+    return '';
   }
-  return display.innerText
+  return display.innerText;
 }
-
-
-
-
-for (let value of numbers) {
-  value.addEventListener('click', function (e) {
-    viewNumber(e.target.innerText)
-  })
-};
-
 
 function viewNumber(value) {
   if (memoryNewNumber) {
-    render(value)
+    render(value);
     memoryNewNumber = false;
   } else if (display.innerText === '0') {
-    render(value)
+    render(value);
   } else {
-    const newValue = getDisplayValue() + value
-    render(newValue)
+    const newValue = getDisplayValue() + value;
+    render(newValue);
   }
-};
+}
 
-
-
-for (let sign of operations) {
-  sign.addEventListener('click', function (w) {
-    viewOperations(w.target.innerText)
-  })
-};
-
-
+numbers.forEach((number) => {
+  number.addEventListener('click', (e) => {
+    viewNumber(e.target.innerText);
+  });
+});
 
 function viewOperations(oper) {
-  let localOper = getDisplayValue()
+  const localOper = getDisplayValue();
   if (memoryNewNumber && memoryOperation !== '=') {
-    render(memoryOldNumber)
+    render(memoryOldNumber);
     memoryNewNumber = false;
   } else {
     memoryNewNumber = true;
@@ -78,41 +59,40 @@ function viewOperations(oper) {
       memoryOldNumber *= parseFloat(localOper);
     } else if (memoryOperation === '/') {
       if (localOper === '0') {
-        memoryOldNumber = 'Error'
+        memoryOldNumber = 'Error';
       } else {
         memoryOldNumber /= parseFloat(localOper);
       }
-    }
-    else {
+    } else {
       memoryOldNumber = parseFloat(localOper);
     }
-    render(memoryOldNumber.toString().slice(0, 13))
+    render(memoryOldNumber.toString().slice(0, 13));
     memoryOperation = oper;
   }
 }
 
-
+operations.forEach((sign) => {
+  sign.addEventListener('click', (e) => {
+    viewOperations(e.target.innerText);
+  });
+});
 
 dot.addEventListener('click', () => {
   let localDot = getDisplayValue();
   if (memoryNewNumber) {
-    localDot = ".";
+    localDot = '.';
     memoryNewNumber = false;
   } else if (localDot.indexOf('.') === -1) {
     localDot += '.';
-  };
+  }
   render(localDot);
 });
-
-
 
 clearOneSimbol.addEventListener('click', () => {
   const newValue = getDisplayValue().slice(0, -1);
   render(newValue);
   memoryNewNumber = false;
 });
-
-
 
 clear.addEventListener('click', () => {
   render('');
@@ -121,10 +101,8 @@ clear.addEventListener('click', () => {
   memoryOperation = '';
 });
 
-
-
 minus.addEventListener('click', () => {
-  const newValue = getDisplayValue() * -1
+  const newValue = getDisplayValue() * -1;
   render(newValue.toString());
   memoryNewNumber = false;
 });
