@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/lantome/calculator/issues"
   },
-  "homepage": "https://lantome.github.io/calculator/",
+  "homepage": "https://lantome.github.io/calculator",
   "devDependencies": {
     "gh-pages": "^3.2.2"
   }

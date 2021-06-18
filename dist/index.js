@@ -42,7 +42,6 @@ for (let value of numbers) {
 
 
 function viewNumber(value) {
-  console.log(memoryNewNumber);
   if (memoryNewNumber) {
     render(value)
     memoryNewNumber = false;
@@ -96,7 +95,6 @@ function viewOperations(oper) {
 
 dot.addEventListener('click', () => {
   let localDot = getDisplayValue();
-
   if (memoryNewNumber) {
     localDot = ".";
     memoryNewNumber = false;
@@ -109,7 +107,6 @@ dot.addEventListener('click', () => {
 
 
 clearOneSimbol.addEventListener('click', () => {
-  console.log(memoryNewNumber)
   const newValue = getDisplayValue().slice(0, -1);
   render(newValue);
   memoryNewNumber = false;
