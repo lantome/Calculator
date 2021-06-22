@@ -1,12 +1,15 @@
 {
   "extends": ["airbnb/base"],
   "env": {
-    "browser": true
+    "browser": true,
+    "es6": true,
+    "node": true
   },
   "globals": {
     "SVGAltGlyphElement": false
   },
   "rules": {
-    "linebreak-style": ["error", "windows"]
+    "linebreak-style": ["error", "windows"],
+    "semi":"off"
   }
 }
