@@ -14,6 +14,7 @@ let memoryOperation = ''
 function render(value) {
   const maxLengthSimbolsOnDisplay = value.length > 14
   if (maxLengthSimbolsOnDisplay) {
+  if (value.length > 14) {
     display.innerText = ERROR_TEXT
   } else {
     display.innerText = value
@@ -23,6 +24,7 @@ function render(value) {
 function getDisplayValue() {
   const viewOnDisplayError = display.innerText.includes(ERROR_TEXT)
   if (viewOnDisplayError) {
+  if (display.innerText.includes(ERROR_TEXT)) {
     return ''
   }
   return display.innerText
@@ -50,6 +52,7 @@ function viewOperations(oper) {
   const localOper = getDisplayValue()
   const optionsForAccount = memoryNewNumber && memoryOperation !== '='
   if (optionsForAccount) {
+  if (memoryNewNumber && memoryOperation !== '=') {
     render(memoryOldNumber)
     memoryNewNumber = false
   } else {
