@@ -10,6 +10,6 @@
   },
   "rules": {
     "linebreak-style": ["error", "windows"],
-    "semi":"off"
+    "semi": [ "error", "never" ]
   }
 }
