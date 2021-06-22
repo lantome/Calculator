@@ -12,9 +12,10 @@ let memoryNewNumber = false
 let memoryOperation = ''
 
 function render(value) {
-  const maxLengthSimbolsOnDisplay = value.length > 14
+  const maxSimbolDislplay = 14
+  const maxLengthSimbolsOnDisplay = value.length > maxSimbolDislplay
+
   if (maxLengthSimbolsOnDisplay) {
-  if (value.length > 14) {
     display.innerText = ERROR_TEXT
   } else {
     display.innerText = value
@@ -23,8 +24,8 @@ function render(value) {
 
 function getDisplayValue() {
   const viewOnDisplayError = display.innerText.includes(ERROR_TEXT)
+
   if (viewOnDisplayError) {
-  if (display.innerText.includes(ERROR_TEXT)) {
     return ''
   }
   return display.innerText
@@ -51,8 +52,8 @@ numbers.forEach((number) => {
 function viewOperations(oper) {
   const localOper = getDisplayValue()
   const optionsForAccount = memoryNewNumber && memoryOperation !== '='
+
   if (optionsForAccount) {
-  if (memoryNewNumber && memoryOperation !== '=') {
     render(memoryOldNumber)
     memoryNewNumber = false
   } else {
@@ -85,6 +86,7 @@ operations.forEach((sign) => {
 
 dot.addEventListener('click', () => {
   let localDot = getDisplayValue()
+
   if (memoryNewNumber) {
     localDot = '.'
     memoryNewNumber = false
