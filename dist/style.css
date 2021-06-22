@@ -40,7 +40,7 @@
   cursor: pointer;
 }
 
-.number:hover {
+.number:active {
   transition: .1s linear;
   box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
 }
@@ -57,7 +57,7 @@
   cursor: pointer;
 }
 
-.operation:hover {
+.operation:active {
   transition: .1s linear;
   box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
 }
@@ -99,17 +99,17 @@
   cursor: pointer;
 }
 
-.clear:hover {
+.clear:active {
   transition: .1s linear;
   box-shadow: inset 3px 3px 6px rgba(255, 255, 255, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
 }
 
-.minus:hover {
+.minus:active {
   transition: .1s linear;
   box-shadow: inset 3px 3px 6px rgba(255, 255, 255, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
 }
 
-.delete:hover {
+.delete:active {
   transition: .1s linear;
   box-shadow: inset 3px 3px 6px rgba(255, 255, 255, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
 }
@@ -126,7 +126,7 @@
   cursor: pointer;
 }
 
-.dot:hover {
+.dot:active {
   transition: .1s linear;
   box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
 }
