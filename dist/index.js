@@ -14,10 +14,10 @@ let memoryOperation = ''
 function render(value) {
   if (value.length > 14) {
     display.innerText = ERROR_TEXT
-    return display.innerText
+    return
   }
-    display.innerText = value
-    return display.innerText
+  display.innerText = value
+  return
 }
 
 function getDisplayValue() {
@@ -44,7 +44,12 @@ numbers.forEach((number) => {
     viewNumber(e.target.innerText)
   })
 })
-
+switch (oper) {
+  case '+':
+    memoryOldNumber += parseFloat(getDisplayValue())
+    break   
+    c
+}
 function viewOperations(oper) {
   const localOper = getDisplayValue()
   if (memoryNewNumber && memoryOperation !== '=') {
