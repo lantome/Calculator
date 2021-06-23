@@ -14,9 +14,10 @@ let memoryOperation = ''
 function render(value) {
   if (value.length > 14) {
     display.innerText = ERROR_TEXT
-  } else {
-    display.innerText = value
+    return display.innerText
   }
+    display.innerText = value
+    return display.innerText
 }
 
 function getDisplayValue() {
