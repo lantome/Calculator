@@ -9,7 +9,7 @@ const ERROR_TEXT = 'Error'
 
 let memoryOldNumber = 0
 let hasNewNumberInMemory = false
-let memoryOpertion = ''
+let memoryOperation = ''
 
 function render(value) {
   const MAX_NUMBER_OF_SYMBOL = 14
@@ -49,22 +49,22 @@ numbers.forEach((number) => {
   })
 })
 
-function viewOperations(oper) {
+function viewOperations(operation) {
   const localOper = getDisplayValue()
-  const isOptionsForAccount = hasNewNumberInMemory && memoryOpertion !== '='
+  const isOptionsForAccount = hasNewNumberInMemory && memoryOperation !== '='
 
   if (isOptionsForAccount) {
     render(memoryOldNumber)
     hasNewNumberInMemory = false
   } else {
     hasNewNumberInMemory = true
-    if (memoryOpertion === '+') {
+    if (memoryOperation === '+') {
       memoryOldNumber += parseFloat(localOper)
-    } else if (memoryOpertion === '-') {
+    } else if (memoryOperation === '-') {
       memoryOldNumber -= parseFloat(localOper)
-    } else if (memoryOpertion === '*') {
+    } else if (memoryOperation === '*') {
       memoryOldNumber *= parseFloat(localOper)
-    } else if (memoryOpertion === '/') {
+    } else if (memoryOperation === '/') {
       if (localOper === '0') {
         memoryOldNumber = 'Error'
       } else {
@@ -74,7 +74,7 @@ function viewOperations(oper) {
       memoryOldNumber = parseFloat(localOper)
     }
     render(memoryOldNumber.toString().slice(0, 13))
-    memoryOpertion = oper
+    memoryOperation = operation
   }
 }
 
@@ -106,7 +106,7 @@ clear.addEventListener('click', () => {
   render('')
   hasNewNumberInMemory = false
   memoryOldNumber = 0
-  memoryOpertion = ''
+  memoryOperation = ''
 })
 
 minus.addEventListener('click', () => {
