@@ -7,15 +7,15 @@ const clearOneSimbol = document.querySelector('.delete')
 const minus = document.querySelector('.minus')
 const ERROR_TEXT = 'Error'
 
-let memoryOldNumber = 0
-let memoryNewNumber = false
-let memoryOperation = ''
+let MEMORY_OLD_NUMBER = 0
+let isMemoryNewNumber = false
+let MEMORY_OPERATION = ''
 
 function render(value) {
-  const maxSimbolDislplay = 14
-  const maxLengthSimbolsOnDisplay = value.length > maxSimbolDislplay
+  const MAX_NUMBER_OF_CHARECTERS = 14
+  const isMaxLengthSimbolsOnDisplay = value.length > MAX_NUMBER_OF_CHARECTERS
 
-  if (maxLengthSimbolsOnDisplay) {
+  if (isMaxLengthSimbolsOnDisplay) {
     display.innerText = ERROR_TEXT
   } else {
     display.innerText = value
@@ -23,18 +23,18 @@ function render(value) {
 }
 
 function getDisplayValue() {
-  const viewOnDisplayError = display.innerText.includes(ERROR_TEXT)
+  const isViewOnDisplayError = display.innerText.includes(ERROR_TEXT)
 
-  if (viewOnDisplayError) {
+  if (isViewOnDisplayError) {
     return ''
   }
   return display.innerText
 }
 
 function viewNumber(value) {
-  if (memoryNewNumber) {
+  if (isMemoryNewNumber) {
     render(value)
-    memoryNewNumber = false
+    isMemoryNewNumber = false
   } else if (display.innerText === '0') {
     render(value)
   } else {
@@ -51,30 +51,30 @@ numbers.forEach((number) => {
 
 function viewOperations(oper) {
   const localOper = getDisplayValue()
-  const optionsForAccount = memoryNewNumber && memoryOperation !== '='
+  const isOptionsForAccount = isMemoryNewNumber && MEMORY_OPERATION !== '='
 
-  if (optionsForAccount) {
-    render(memoryOldNumber)
-    memoryNewNumber = false
+  if (isOptionsForAccount) {
+    render(MEMORY_OLD_NUMBER)
+    isMemoryNewNumber = false
   } else {
-    memoryNewNumber = true
-    if (memoryOperation === '+') {
-      memoryOldNumber += parseFloat(localOper)
-    } else if (memoryOperation === '-') {
-      memoryOldNumber -= parseFloat(localOper)
-    } else if (memoryOperation === '*') {
-      memoryOldNumber *= parseFloat(localOper)
-    } else if (memoryOperation === '/') {
+    isMemoryNewNumber = true
+    if (MEMORY_OPERATION === '+') {
+      MEMORY_OLD_NUMBER += parseFloat(localOper)
+    } else if (MEMORY_OPERATION === '-') {
+      MEMORY_OLD_NUMBER -= parseFloat(localOper)
+    } else if (MEMORY_OPERATION === '*') {
+      MEMORY_OLD_NUMBER *= parseFloat(localOper)
+    } else if (MEMORY_OPERATION === '/') {
       if (localOper === '0') {
-        memoryOldNumber = 'Error'
+        MEMORY_OLD_NUMBER = 'Error'
       } else {
-        memoryOldNumber /= parseFloat(localOper)
+        MEMORY_OLD_NUMBER /= parseFloat(localOper)
       }
     } else {
-      memoryOldNumber = parseFloat(localOper)
+      MEMORY_OLD_NUMBER = parseFloat(localOper)
     }
-    render(memoryOldNumber.toString().slice(0, 13))
-    memoryOperation = oper
+    render(MEMORY_OLD_NUMBER.toString().slice(0, 13))
+    MEMORY_OPERATION = oper
   }
 }
 
@@ -87,9 +87,9 @@ operations.forEach((sign) => {
 dot.addEventListener('click', () => {
   let localDot = getDisplayValue()
 
-  if (memoryNewNumber) {
+  if (isMemoryNewNumber) {
     localDot = '.'
-    memoryNewNumber = false
+    isMemoryNewNumber = false
   } else if (localDot.indexOf('.') === -1) {
     localDot += '.'
   }
@@ -99,18 +99,18 @@ dot.addEventListener('click', () => {
 clearOneSimbol.addEventListener('click', () => {
   const newValue = getDisplayValue().slice(0, -1)
   render(newValue)
-  memoryNewNumber = false
+  isMemoryNewNumber = false
 })
 
 clear.addEventListener('click', () => {
   render('')
-  memoryNewNumber = false
-  memoryOldNumber = 0
-  memoryOperation = ''
+  isMemoryNewNumber = false
+  MEMORY_OLD_NUMBER = 0
+  MEMORY_OPERATION = ''
 })
 
 minus.addEventListener('click', () => {
   const newValue = getDisplayValue() * -1
   render(newValue.toString())
-  memoryNewNumber = false
+  isMemoryNewNumber = false
 })
