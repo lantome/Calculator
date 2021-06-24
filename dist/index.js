@@ -52,6 +52,7 @@ numbers.forEach((number) => {
 function viewOperations(operation) {
   const localOper = getDisplayValue()
   const isOptionsForAccount = hasNewNumberInMemory && memoryOperation !== '='
+  const maxNumberOfSymbol = memoryOldNumber.toString().slice(0, 13)
 
   if (isOptionsForAccount) {
     render(memoryOldNumber)
@@ -73,7 +74,7 @@ function viewOperations(operation) {
     } else {
       memoryOldNumber = parseFloat(localOper)
     }
-    render(memoryOldNumber.toString().slice(0, 13))
+    render(maxNumberOfSymbol)
     memoryOperation = operation
   }
 }
