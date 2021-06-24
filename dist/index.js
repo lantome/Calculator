@@ -44,12 +44,7 @@ numbers.forEach((number) => {
     viewNumber(e.target.innerText)
   })
 })
-switch (oper) {
-  case '+':
-    memoryOldNumber += parseFloat(getDisplayValue())
-    break   
-    c
-}
+
 function viewOperations(oper) {
   const localOper = getDisplayValue()
   if (memoryNewNumber && memoryOperation !== '=') {
