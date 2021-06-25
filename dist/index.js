@@ -17,9 +17,10 @@ function render(value) {
 
   if (isMaxLengthSymbolsOnDisplay) {
     display.innerText = ERROR_TEXT
-  } else {
-    display.innerText = value
+    return
   }
+  display.innerText = value
+  return
 }
 
 function getDisplayValue() {
