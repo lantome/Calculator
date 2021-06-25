@@ -3,16 +3,19 @@ const operations = document.querySelectorAll('.operation')
 const dot = document.querySelector('.dot')
 const clear = document.querySelector('.clear')
 const display = document.querySelector('.display')
-const clearOneSimbol = document.querySelector('.delete')
+const clearOneSymbol = document.querySelector('.delete')
 const minus = document.querySelector('.minus')
 const ERROR_TEXT = 'Error'
 
 let memoryOldNumber = 0
-let memoryNewNumber = false
+let hasNewNumberInMemory = false
 let memoryOperation = ''
 
 function render(value) {
-  if (value.length > 14) {
+  const MAX_NUMBER_OF_SYMBOL = 14
+  const isMaxLengthSymbolsOnDisplay = value.length > MAX_NUMBER_OF_SYMBOL
+
+  if (isMaxLengthSymbolsOnDisplay) {
     display.innerText = ERROR_TEXT
   } else {
     display.innerText = value
@@ -20,16 +23,18 @@ function render(value) {
 }
 
 function getDisplayValue() {
-  if (display.innerText.includes(ERROR_TEXT)) {
+  const isDisplayError = display.innerText.includes(ERROR_TEXT)
+
+  if (isDisplayError) {
     return ''
   }
   return display.innerText
 }
 
 function viewNumber(value) {
-  if (memoryNewNumber) {
+  if (hasNewNumberInMemory) {
     render(value)
-    memoryNewNumber = false
+    hasNewNumberInMemory = false
   } else if (display.innerText === '0') {
     render(value)
   } else {
@@ -44,13 +49,16 @@ numbers.forEach((number) => {
   })
 })
 
-function viewOperations(oper) {
+function viewOperations(operation) {
   const localOper = getDisplayValue()
-  if (memoryNewNumber && memoryOperation !== '=') {
+  const isOptionsForAccount = hasNewNumberInMemory && memoryOperation !== '='
+  const maxNumberOfSymbol = memoryOldNumber.toString().slice(0, 13)
+
+  if (isOptionsForAccount) {
     render(memoryOldNumber)
-    memoryNewNumber = false
+    hasNewNumberInMemory = false
   } else {
-    memoryNewNumber = true
+    hasNewNumberInMemory = true
     if (memoryOperation === '+') {
       memoryOldNumber += parseFloat(localOper)
     } else if (memoryOperation === '-') {
@@ -66,8 +74,8 @@ function viewOperations(oper) {
     } else {
       memoryOldNumber = parseFloat(localOper)
     }
-    render(memoryOldNumber.toString().slice(0, 13))
-    memoryOperation = oper
+    render(maxNumberOfSymbol)
+    memoryOperation = operation
   }
 }
 
@@ -79,24 +87,25 @@ operations.forEach((sign) => {
 
 dot.addEventListener('click', () => {
   let localDot = getDisplayValue()
-  if (memoryNewNumber) {
+
+  if (hasNewNumberInMemory) {
     localDot = '.'
-    memoryNewNumber = false
+    hasNewNumberInMemory = false
   } else if (localDot.indexOf('.') === -1) {
     localDot += '.'
   }
   render(localDot)
 })
 
-clearOneSimbol.addEventListener('click', () => {
+clearOneSymbol.addEventListener('click', () => {
   const newValue = getDisplayValue().slice(0, -1)
   render(newValue)
-  memoryNewNumber = false
+  hasNewNumberInMemory = false
 })
 
 clear.addEventListener('click', () => {
   render('')
-  memoryNewNumber = false
+  hasNewNumberInMemory = false
   memoryOldNumber = 0
   memoryOperation = ''
 })
@@ -104,5 +113,5 @@ clear.addEventListener('click', () => {
 minus.addEventListener('click', () => {
   const newValue = getDisplayValue() * -1
   render(newValue.toString())
-  memoryNewNumber = false
+  hasNewNumberInMemory = false
 })
